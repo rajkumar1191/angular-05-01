@@ -1,5 +1,13 @@
 <main class="main">
-  <h1>Welcome to {{ title }}!!</h1>
+  <h1 (click)="handleClick()">Welcome to {{ title }}!!</h1>
+
+  <img [src]="srcpath" alt="Angular Logo" width="300" />
+  <input [value]="name" (input)="handleInputChange($event)" />
+
+  <p>Your name is {{ name }}</p>
+  <app-about [name]="name"></app-about>
+  <app-services (serviceList)="handleServiceList($event)"></app-services>
+  <app-contact></app-contact>
 </main>
 
 <router-outlet />

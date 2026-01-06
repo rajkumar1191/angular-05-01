@@ -1,19 +1,45 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { AboutComponent } from '../components/about/about.component';
+import { ServicesComponent } from '../components/services/services.component';
+import { ContactComponent } from '../components/contact/contact.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, AboutComponent, ServicesComponent, ContactComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
 export class AppComponent {
   title = 'angular-tutorial';
+  srcpath = 'https://angular.io/assets/images/logos/angular/angular.png';
+  name = '';
 
   /*
      ngModule 
      standalone: true
+
+     Binding Components in Angular Applications
+     1. property binding
+     2. event binding
+     3. two-way binding
+
+     @Input()  --> property binding - passing data from parent to child
+     @Output() --> event binding - passing data from child to parent
+
   */
 
+  handleClick() {
+    alert('Welcome to Angular Tutorial');
+  }
+
+  handleInputChange(event: Event) {
+    const inputElement = event.target as HTMLInputElement;
+    this.name = inputElement.value;
+  }
+
+  handleServiceList(services: string[]) {
+    console.log('Received services from ServicesComponent:', services);
+  }
 }
