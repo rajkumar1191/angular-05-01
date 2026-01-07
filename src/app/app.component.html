@@ -4,8 +4,39 @@
   <img [src]="srcpath" alt="Angular Logo" width="300" />
   <input [value]="name" (input)="handleInputChange($event)" />
 
-  <p>Your name is {{ name }}</p>
+  <p *ngIf="name" appCustomDirective>Your name is {{ name }}</p>
+  @if (name) {
   <app-about [name]="name"></app-about>
+  }
+
+  <ul>
+    <li *ngFor="let c of course">{{ c }}</li>
+  </ul>
+
+  <ul>
+    @for (item of course; track $index) {
+    <li>{{ item }}</li>
+    }
+  </ul>
+
+  <div [ngSwitch]="day">
+    <p *ngSwitchCase="'Monday'">It's Monday!</p>
+    <p *ngSwitchCase="'Friday'">It's Friday!</p>
+    <p *ngSwitchDefault>It's another day.</p>
+  </div>
+  <div>
+    @switch (day) { @case ('Monday') {
+    <p>It's Monday!</p>
+    } @case ('Friday') {
+    <p>It's Friday!</p>
+    } @default {
+    <p>It's another day.</p>
+    } }
+  </div>
+
+  <div [ngClass]="day == 'Monday' ? 'success' : 'failed'">Your mark is 95</div>
+  <div [ngStyle]="{ color: day == 'Monday' ? 'green' : 'red' }">Today is {{ day }}</div>
+
   <app-services (serviceList)="handleServiceList($event)"></app-services>
   <app-contact></app-contact>
 </main>

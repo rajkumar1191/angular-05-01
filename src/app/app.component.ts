@@ -3,11 +3,20 @@ import { RouterOutlet } from '@angular/router';
 import { AboutComponent } from '../components/about/about.component';
 import { ServicesComponent } from '../components/services/services.component';
 import { ContactComponent } from '../components/contact/contact.component';
+import { CommonModule } from '@angular/common';
+import { CustomDirectiveDirective } from './custom-directive.directive';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, AboutComponent, ServicesComponent, ContactComponent],
+  imports: [
+    RouterOutlet,
+    CommonModule,
+    AboutComponent,
+    ServicesComponent,
+    ContactComponent,
+    CustomDirectiveDirective,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
@@ -15,6 +24,8 @@ export class AppComponent {
   title = 'angular-tutorial';
   srcpath = 'https://angular.io/assets/images/logos/angular/angular.png';
   name = '';
+  course = ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'Angular'];
+  day = 'Monday';
 
   /*
      ngModule 
@@ -27,6 +38,17 @@ export class AppComponent {
 
      @Input()  --> property binding - passing data from parent to child
      @Output() --> event binding - passing data from child to parent
+
+
+     lifecycle hooks
+     1. ngOnChanges() - 
+     2. ngOnInit()
+     3. ngDoCheck()
+     4. ngAfterContentInit()
+     5. ngAfterContentChecked()
+     6. ngAfterViewInit()
+     7. ngAfterViewChecked()
+     8. ngOnDestroy()
 
   */
 
