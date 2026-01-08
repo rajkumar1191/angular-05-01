@@ -5,6 +5,7 @@ import { ServicesComponent } from '../components/services/services.component';
 import { ContactComponent } from '../components/contact/contact.component';
 import { CommonModule } from '@angular/common';
 import { CustomDirectiveDirective } from './custom-directive.directive';
+import { TempConverterPipe } from './temp-converter.pipe';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,7 @@ import { CustomDirectiveDirective } from './custom-directive.directive';
     ServicesComponent,
     ContactComponent,
     CustomDirectiveDirective,
+    TempConverterPipe
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
@@ -26,6 +28,12 @@ export class AppComponent {
   name = '';
   course = ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'Angular'];
   day = 'Monday';
+  date = new Date();
+  price = 1500;
+  decimalNumber = 0.75344343435;
+  percentage = 0.25;
+  jsonData = { name: 'Angular', version: '12' };
+  
 
   /*
      ngModule 
@@ -50,6 +58,18 @@ export class AppComponent {
      7. ngAfterViewChecked()
      8. ngOnDestroy()
 
+
+     Pipes in Angular - take data as input and transform it to a desired output
+     1. built-in pipes
+        a. DatePipe
+        b. UpperCasePipe
+        c. LowerCasePipe
+        d. CurrencyPipe
+        e. DecimalPipe
+        f. PercentPipe
+        g. JsonPipe
+        h. SlicePipe
+      2. custom pipes
   */
 
   handleClick() {

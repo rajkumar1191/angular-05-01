@@ -4,7 +4,21 @@
   <img [src]="srcpath" alt="Angular Logo" width="300" />
   <input [value]="name" (input)="handleInputChange($event)" />
 
-  <p *ngIf="name" appCustomDirective>Your name is {{ name }}</p>
+  <h3>{{ date | date : "MMM-dd-YYY" | uppercase }}</h3>
+  <h3>{{ price | currency : "INR" : "symbol" : "1.2-2" }}</h3>
+  <h3>{{ decimalNumber | number : "1.0-2" }}</h3>
+  <h3>{{ percentage | percent : "1.0-2" }}</h3>
+  <h3>{{ jsonData | json }}</h3>
+
+  <p *ngIf="name" appCustomDirective>Your name is {{ name | uppercase }}</p>
+  <p *ngIf="name" appCustomDirective>Your name is {{ name | lowercase }}</p>
+  <p *ngIf="name" appCustomDirective>Your name is {{ name | slice : 1 : 6 }}</p>
+
+  <h4>
+    Temperature in Celsius: 100 &#8451; = Temperature in Fahrenheit:
+    {{ 100 | tempConverter }} &#8457;
+  </h4>
+
   @if (name) {
   <app-about [name]="name"></app-about>
   }
@@ -35,7 +49,9 @@
   </div>
 
   <div [ngClass]="day == 'Monday' ? 'success' : 'failed'">Your mark is 95</div>
-  <div [ngStyle]="{ color: day == 'Monday' ? 'green' : 'red' }">Today is {{ day }}</div>
+  <div [ngStyle]="{ color: day == 'Monday' ? 'green' : 'red' }">
+    Today is {{ day }}
+  </div>
 
   <app-services (serviceList)="handleServiceList($event)"></app-services>
   <app-contact></app-contact>
