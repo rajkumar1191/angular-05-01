@@ -29,7 +29,7 @@
 
   <ul>
     @for (item of course; track $index) {
-    <li>{{ item }}</li>
+    <li><app-about [name]="item"></app-about></li>
     }
   </ul>
 

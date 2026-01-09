@@ -70,6 +70,12 @@ export class AppComponent {
         g. JsonPipe
         h. SlicePipe
       2. custom pipes
+
+      Forms in Angular
+      1. template-driven forms
+        - use FormsModule
+      2. reactive forms
+      - use ReactiveFormsModule
   */
 
   handleClick() {
