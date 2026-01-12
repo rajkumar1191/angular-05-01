@@ -1,31 +1,54 @@
 <h3>Service Component</h3>
 <form [formGroup]="contactForm" (submit)="submitForm()">
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" formControlName="name">
-    <div *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched" style="color: red;">
-        Name is required.
-    </div>
-    
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" formControlName="email">
-    <div *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched" style="color: red;">
-        Valid email is required.
-    </div>
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" formControlName="name" />
+  <div
+    *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched"
+    style="color: red"
+  >
+    Name is required.
+  </div>
 
-    <div formArrayName="skills">
-        <div *ngFor="let skill of skills.controls; let i = index">
-            <input [formControlName]="i" />
-        </div>
-        <button (click)="addSkill()">Add Skill</button>
-    </div>
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" formControlName="email" />
+  <div
+    *ngIf="
+      contactForm.get('email')?.invalid && contactForm.get('email')?.touched
+    "
+    style="color: red"
+  >
+    Valid email is required.
+  </div>
 
-    <label for="message">Message:</label>
-    <textarea id="message" name="message" formControlName="message"></textarea>
-    <div *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched" style="color: red;">
-        Message is required.
+  <div formArrayName="skills">
+    <div *ngFor="let skill of skills.controls; let i = index">
+      <input [formControlName]="i" />
     </div>
-    <button type="submit" [disabled]="!contactForm.valid">Submit</button>
+    <button (click)="addSkill()">Add Skill</button>
+  </div>
+
+  <label for="message">Message:</label>
+  <textarea id="message" name="message" formControlName="message"></textarea>
+  <div
+    *ngIf="
+      contactForm.get('message')?.invalid && contactForm.get('message')?.touched
+    "
+    style="color: red"
+  >
+    Message is required.
+  </div>
+  <button type="submit" [disabled]="!contactForm.valid">Submit</button>
 </form>
 
 <button (click)="handleSetandPatch()">Set and Patch Form</button>
 <button (click)="handleClick()">Send Data to Parent</button>
+
+<button (click)="fetchApiData()">Fetch Data from API</button>
+<div *ngIf="apiData">
+  <h4>Data from API:</h4>
+  <pre>{{ apiData | json }}</pre>
+</div>
+
+<button (click)="postApiData()">Post Data to API</button>
+<button (click)="updateApiData()">Update Data to API</button>
+<button (click)="deleteApiData()">Delete Data from API</button>

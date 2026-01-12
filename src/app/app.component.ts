@@ -76,6 +76,13 @@ export class AppComponent {
         - use FormsModule
       2. reactive forms
       - use ReactiveFormsModule
+
+
+      services and dependency injection
+      - @Injectable()
+      - providedIn: 'root'
+      - constructor(private serviceName: ServiceType)
+      - allow us to write reusable, maintainable, and testable code
   */
 
   handleClick() {

@@ -1,11 +1,19 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormArray, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormArray,
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { HttpService } from '../../app/http.service';
 
 @Component({
   selector: 'app-services',
   standalone: true,
   imports: [ReactiveFormsModule, CommonModule],
+  providers: [HttpService],
   templateUrl: './services.component.html',
   styleUrl: './services.component.css',
 })
@@ -14,6 +22,9 @@ export class ServicesComponent implements OnInit {
 
   contactForm: any = new FormGroup({});
 
+  apiData: any;
+
+  constructor(private httpService: HttpService) {}
   ngOnInit() {
     this.contactForm = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.minLength(3)]),
@@ -45,18 +56,57 @@ export class ServicesComponent implements OnInit {
     return this.contactForm.get('skills') as FormArray;
   }
 
-  addSkill(){
+  addSkill() {
     const skills = this.contactForm.get('skills') as FormArray;
     skills.push(new FormControl(''));
   }
-
 
   handleClick() {
     const services = ['Web Development', 'App Development', 'SEO Optimization'];
     this.serviceList.emit(services);
   }
 
-  submitForm(){
-    console.log('Form Submitted!', this.contactForm.value, this.contactForm.valid);
+  submitForm() {
+    console.log(
+      'Form Submitted!',
+      this.contactForm.value,
+      this.contactForm.valid
+    );
+  }
+
+  fetchApiData() {
+    this.httpService.getData('posts').subscribe((data) => {
+      this.apiData = data;
+      console.log('API Data fetched:', this.apiData);
+    });
+  }
+
+  postApiData() {
+    const postData = {
+      title: 'foo',
+      body: 'bar',
+      userId: 1,
+    };
+    this.httpService.postData('posts', postData).subscribe((data) => {
+      console.log('API Data posted:', data);
+    });
+  }
+
+  updateApiData() {
+    const updateData = {
+      id: 1,
+      title: 'updated title',
+      body: 'updated body',
+      userId: 1,
+    };
+    this.httpService.updateData('posts/1', updateData).subscribe((data) => {
+      console.log('API Data updated:', data);
+    });
+  }
+
+  deleteApiData() {
+    this.httpService.deleteData('posts/1').subscribe((data) => {
+      console.log('API Data deleted:', data);
+    });
   }
 }
