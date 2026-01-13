@@ -1,0 +1,54 @@
+<main class="main">
+  <h1 (click)="handleClick()">Welcome to {{ title }}!!</h1>
+
+  <img [src]="srcpath" alt="Angular Logo" width="300" />
+  <input [value]="name" (input)="handleInputChange($event)" />
+
+  <h3>{{ date | date : "MMM-dd-YYY" | uppercase }}</h3>
+  <h3>{{ price | currency : "INR" : "symbol" : "1.2-2" }}</h3>
+  <h3>{{ decimalNumber | number : "1.0-2" }}</h3>
+  <h3>{{ percentage | percent : "1.0-2" }}</h3>
+  <h3>{{ jsonData | json }}</h3>
+
+  <p *ngIf="name" appCustomDirective>Your name is {{ name | uppercase }}</p>
+  <p *ngIf="name" appCustomDirective>Your name is {{ name | lowercase }}</p>
+  <p *ngIf="name" appCustomDirective>Your name is {{ name | slice : 1 : 6 }}</p>
+
+  <h4>
+    Temperature in Celsius: 100 &#8451; = Temperature in Fahrenheit:
+    {{ 100 | tempConverter }} &#8457;
+  </h4>
+
+  <ul>
+    <li *ngFor="let c of course">{{ c }}</li>
+  </ul>
+
+  <!-- <ul>
+    @for (item of course; track $index) {
+    <li><app-about [name]="item"></app-about></li>
+    }
+  </ul> -->
+
+  <div [ngSwitch]="day">
+    <p *ngSwitchCase="'Monday'">It's Monday!</p>
+    <p *ngSwitchCase="'Friday'">It's Friday!</p>
+    <p *ngSwitchDefault>It's another day.</p>
+  </div>
+  <div>
+    @switch (day) { @case ('Monday') {
+    <p>It's Monday!</p>
+    } @case ('Friday') {
+    <p>It's Friday!</p>
+    } @default {
+    <p>It's another day.</p>
+    } }
+  </div>
+
+  <div [ngClass]="day == 'Monday' ? 'success' : 'failed'">Your mark is 95</div>
+  <div [ngStyle]="{ color: day == 'Monday' ? 'green' : 'red' }">
+    Today is {{ day }}
+  </div>
+
+  <!-- <app-services (serviceList)="handleServiceList($event)"></app-services> -->
+  <!-- <app-contact></app-contact> -->
+</main>

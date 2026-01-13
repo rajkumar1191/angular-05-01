@@ -46,7 +46,12 @@
 <button (click)="fetchApiData()">Fetch Data from API</button>
 <div *ngIf="apiData">
   <h4>Data from API:</h4>
-  <pre>{{ apiData | json }}</pre>
+
+  <ul>
+    <li *ngFor="let item of apiData">
+      <span (click)="navItem(item.id)"> {{ item.id }} - {{ item.title }}</span>
+    </li>
+  </ul>
 </div>
 
 <button (click)="postApiData()">Post Data to API</button>

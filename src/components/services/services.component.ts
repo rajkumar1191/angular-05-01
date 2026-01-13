@@ -8,6 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { HttpService } from '../../app/http.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-services',
@@ -24,8 +25,22 @@ export class ServicesComponent implements OnInit {
 
   apiData: any;
 
-  constructor(private httpService: HttpService) {}
+  constructor(
+    private httpService: HttpService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
   ngOnInit() {
+    this.route.paramMap.subscribe((params) => {
+      console.log(params);
+      const id = params.get('id');
+      console.log('Service Component initialized with ID:', id);
+    });
+
+    this.route.queryParamMap.subscribe((queryParams) => {
+      console.log('Query Params:', queryParams);
+    });
+
     this.contactForm = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.minLength(3)]),
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -75,10 +90,15 @@ export class ServicesComponent implements OnInit {
   }
 
   fetchApiData() {
-    this.httpService.getData('posts').subscribe((data) => {
-      this.apiData = data;
+    this.httpService.getData('posts').subscribe((data: any) => {
+      this.apiData = data.slice(0, 20);
       console.log('API Data fetched:', this.apiData);
     });
+  }
+
+  navItem(id: any) {
+    console.log('Navigating to item with ID:', id);
+    this.router.navigate(['/services', id]); ///services/1
   }
 
   postApiData() {
@@ -101,6 +121,10 @@ export class ServicesComponent implements OnInit {
     };
     this.httpService.updateData('posts/1', updateData).subscribe((data) => {
       console.log('API Data updated:', data);
+    });
+
+    this.router.navigate(['/services', 1], {
+      queryParams: { ref: 'update', success: true },
     });
   }
 
