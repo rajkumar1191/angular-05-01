@@ -1,6 +1,8 @@
 <main class="main">
   <h1 (click)="handleClick()">Welcome to {{ title }}!!</h1>
 
+
+  <app-signal-component></app-signal-component>
   <img [src]="srcpath" alt="Angular Logo" width="300" />
   <input [value]="name" (input)="handleInputChange($event)" />
 

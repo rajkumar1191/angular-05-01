@@ -57,6 +57,14 @@ export class AppComponent {
       - providedIn: 'root'
       - constructor(private serviceName: ServiceType)
       - allow us to write reusable, maintainable, and testable code
+
+
+      signals - a new reactivity model in Angular used to manage state and handle change detection more efficiently
+      core concepts:
+      - signal creation - signal(), computed(), effect()
+      - reading signals - use the signal as a function to get its current value
+      - updating signals - use set(), update(), or mutating methods for arrays and objects
+      - change detection - Angular automatically tracks signal dependencies and updates the UI when signals change
   */
 
   constructor(private router: Router) {}

@@ -5,11 +5,12 @@ import { TempConverterPipe } from '../../app/temp-converter.pipe';
 import { AboutComponent } from '../about/about.component';
 import { ContactComponent } from '../contact/contact.component';
 import { ServicesComponent } from '../services/services.component';
+import { SignalComponentComponent } from '../signal-component/signal-component.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, CustomDirectiveDirective, TempConverterPipe],
+  imports: [CommonModule, CustomDirectiveDirective, TempConverterPipe, SignalComponentComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
