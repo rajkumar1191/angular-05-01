@@ -6,11 +6,12 @@ import { AboutComponent } from '../about/about.component';
 import { ContactComponent } from '../contact/contact.component';
 import { ServicesComponent } from '../services/services.component';
 import { SignalComponentComponent } from '../signal-component/signal-component.component';
+import { ParentComponent } from "../parent/parent.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, CustomDirectiveDirective, TempConverterPipe, SignalComponentComponent],
+  imports: [CommonModule, CustomDirectiveDirective, TempConverterPipe, SignalComponentComponent, ParentComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })

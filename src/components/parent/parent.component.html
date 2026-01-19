@@ -1,0 +1,12 @@
+<h2>Parent Component</h2>
+<button (click)="increase()">increase count</button>
+<button (click)="mutate()">Mutate Object</button>
+
+<app-default [data]="data"></app-default>
+<app-onpush [data]="data"></app-onpush>
+
+
+<button (click)="store.increment()">Increment Store</button>
+<button (click)="store.reset()">Reset</button>
+
+<app-child-signal></app-child-signal>
