@@ -2,16 +2,23 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { CustomDirectiveDirective } from '../../app/custom-directive.directive';
 import { TempConverterPipe } from '../../app/temp-converter.pipe';
-import { AboutComponent } from '../about/about.component';
-import { ContactComponent } from '../contact/contact.component';
-import { ServicesComponent } from '../services/services.component';
 import { SignalComponentComponent } from '../signal-component/signal-component.component';
-import { ParentComponent } from "../parent/parent.component";
+import { ParentComponent } from '../parent/parent.component';
+import { RxjsOperatorDemoComponent } from '../rxjs-operator-demo/rxjs-operator-demo.component';
+import { SubjectDemoComponent } from '../subject-demo/subject-demo.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, CustomDirectiveDirective, TempConverterPipe, SignalComponentComponent, ParentComponent],
+  imports: [
+    CommonModule,
+    CustomDirectiveDirective,
+    TempConverterPipe,
+    SignalComponentComponent,
+    ParentComponent,
+    RxjsOperatorDemoComponent,
+    SubjectDemoComponent,
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })

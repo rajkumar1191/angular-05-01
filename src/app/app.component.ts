@@ -65,6 +65,14 @@ export class AppComponent {
       - reading signals - use the signal as a function to get its current value
       - updating signals - use set(), update(), or mutating methods for arrays and objects
       - change detection - Angular automatically tracks signal dependencies and updates the UI when signals change
+
+
+      RXJS in Angular
+      - Reactive Extensions for JavaScript - a library for composing asynchronous and event-based programs using observable sequences
+      - Observables - represent a stream of data that can be observed over time
+      - Operators - functions that enable functional programming with observables (map, filter, reduce, mergeMap, concatMap, switchMap, etc.)
+      - Subjects - special type of observable that allows values to be multicasted to multiple observers (Subject, BehaviorSubject, ReplaySubject, AsyncSubject)
+      - Subscriptions - represent the execution of an observable and allow you to unsubscribe when no longer needed to prevent memory leaks
   */
 
   constructor(private router: Router) {}
