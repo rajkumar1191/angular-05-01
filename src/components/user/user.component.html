@@ -1,0 +1,14 @@
+<h3>Users List</h3>
+<button (click)="loadUsers()">Load Users</button>
+
+<p *ngIf="(facade.users$ | async)?.length === 0">No users available.</p>
+
+<p *ngIf="facade.loading$ | async">Loading users...</p>
+
+<p *ngIf="facade.error$ | async as error">Error: {{ error }}</p>
+
+<ul>
+  <li *ngFor="let user of facade.users$ | async">
+    {{ user.name }} ({{ user.email }})
+  </li>
+</ul>

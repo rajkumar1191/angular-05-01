@@ -73,6 +73,19 @@ export class AppComponent {
       - Operators - functions that enable functional programming with observables (map, filter, reduce, mergeMap, concatMap, switchMap, etc.)
       - Subjects - special type of observable that allows values to be multicasted to multiple observers (Subject, BehaviorSubject, ReplaySubject, AsyncSubject)
       - Subscriptions - represent the execution of an observable and allow you to unsubscribe when no longer needed to prevent memory leaks
+
+
+      ngRx - a state management library for Angular applications based on Redux principles and RxJS
+      
+      core concepts:
+      - Store - a single source of truth for the application state
+      - Actions - events that describe state changes
+      - Reducers - pure functions that take the current state and an action to return a new state
+      - Selectors - functions that extract specific pieces of state from the store
+      - Effects - handle side effects like API calls and interact with the store
+
+
+      component -> dispatch action -> effect (API call) -> reducer -> store -> selector -> component
   */
 
   constructor(private router: Router) {}

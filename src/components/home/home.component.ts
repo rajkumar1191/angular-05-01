@@ -6,6 +6,7 @@ import { SignalComponentComponent } from '../signal-component/signal-component.c
 import { ParentComponent } from '../parent/parent.component';
 import { RxjsOperatorDemoComponent } from '../rxjs-operator-demo/rxjs-operator-demo.component';
 import { SubjectDemoComponent } from '../subject-demo/subject-demo.component';
+import { UserComponent } from '../user/user.component';
 
 @Component({
   selector: 'app-home',
@@ -18,6 +19,7 @@ import { SubjectDemoComponent } from '../subject-demo/subject-demo.component';
     ParentComponent,
     RxjsOperatorDemoComponent,
     SubjectDemoComponent,
+    UserComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
